@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: banking-dashboard
+  namespace: banking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: banking-dashboard
+
+  template:
+    metadata:
+      labels:
+        app: banking-dashboard
+
+    spec:
+
+      nodeSelector:
+        type: high-memory
+
+      tolerations:
+        - key: "database-only"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
+        
+      containers:
+        - name: dashboard
+          image: elashrypublic/banking-dashboard:v1.0
+          ports:
+            - containerPort: 80
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 30
