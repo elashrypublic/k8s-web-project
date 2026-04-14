@@ -21,4 +21,4 @@ spec:
 
       containers:
         - name: fluentd
-          image: fluent/fluentd-kubernetes-daemonset
+          image: fluent/fluentd-kubernetes-daemonset:v1.16-debian-elasticsearch7-1.0
