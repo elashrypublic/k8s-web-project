@@ -24,6 +24,11 @@ echo ""
 echo "📦 Starting Minikube (3 nodes)..."
 minikube start --nodes=3 -p minikube
 
+minikube start -p minikube --nodes=3 --memory=8192 --cpus=4 --driver=docker
+
+
+minikube start -p minikube --nodes=3 --memory=8192 --cpus=4 --driver=docker --container-runtime=containerd --kubernetes-version=stable --wait=all
+
 # =================================
 
 # 2. Enable Ingress
@@ -47,9 +52,6 @@ kubectl rollout status deployment ingress-nginx-controller -n ingress-nginx --ti
 
 # =================================
 
-# Taint control-plane node to prevent scheduling of regular workloads
-
-kubectl taint nodes minikube node-role.kubernetes.io/control-plane=true:NoSchedule
 
 # Label worker nodes for resource allocation
 

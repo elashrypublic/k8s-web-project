@@ -246,16 +246,13 @@ k8s/
 ├── 07-dashboard-deployment.yaml
 ├── 08-dashboard-service.yaml
 ├── 09-ingress.yaml
-├── 10-deny-all.yaml
-├── 11-allow-dns.yaml
-├── 12-allow-dashboard-NP.yaml
-├── 13-allow-api-NP.yaml
-├── 14-allow-postgres-NP.yaml
-├── 15-serviceaccounts.yaml
-├── 16-role.yaml
-├── 17-rolebinding.yaml
-├── 18-hpa.yaml
-├── 19-daemonset-fluentd.yaml
+├── 10-network-policy.yaml
+├── 11-serviceaccounts.yaml
+├── 12-role.yaml
+├── 13-rolebinding.yaml
+├── 14-hpa.yaml
+├── 15-daemonset-fluentd.yaml
+├── 16-fluentd-config.yaml
 ```
 ---
 
